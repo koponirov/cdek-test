@@ -52,7 +52,7 @@ components: {
   .footer {
     height: 303px;
     padding-top: 60px;
-    background-color: $deep-black;
+    background-color: $black-deep;
     color: $white;
 
 

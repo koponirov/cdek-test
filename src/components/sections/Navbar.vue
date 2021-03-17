@@ -23,9 +23,7 @@
               .submenu-item__content
                 img(src="@/assets/icons/search.svg")
             phone
-            //.submenu-item__phone
-            //    a.submenu-item__phone-number(href="+7 495 009 04 05 ") +7 495 009 04 05
-            //    p.submenu-item__phone-text Бесплатно по всей России
+
 </template>
 
 <script>
@@ -43,7 +41,8 @@ export default {
   display: flex;
   align-items: center;
   height: 97px;
-  background-color: #fff;
+  border-bottom: 1px solid $grey-light;
+  background-color: $white;
   position: -webkit-sticky;
   position: sticky;
   top: 0;

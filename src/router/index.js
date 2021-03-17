@@ -10,6 +10,16 @@ const routes = [
         name: 'StartConditionsPage',
         component: () => import(/* webpackChunkName: "startConditions" */ '../views/StartConditionsPage.vue')
     },
+    {
+        path: '/services',
+        name: 'ServicesPage',
+        component: () => import(/* webpackChunkName: "services" */ '../views/ServicesPage.vue')
+    },
+    {
+        path: '/support',
+        name: 'SupportPage',
+        component: () => import(/* webpackChunkName: "support" */ '../views/SupportPage.vue')
+    },
 ]
 
 

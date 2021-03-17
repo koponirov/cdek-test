@@ -39,7 +39,7 @@ name: "StartConditionsSection"
     padding-top: 100px;
 
     &__title {
-      color: $deep-black;
+      color: $black-deep;
       font-weight: 500;
       font-size: 50px;
       line-height: 58px;
