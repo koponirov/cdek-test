@@ -81,4 +81,78 @@ export default {
     top: 15px;
   }
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  .legal-services {
+    height: 314px;
+    margin-bottom: 0;
+
+    &__container {
+      min-width: 708px;
+      max-width: 90%;
+    }
+
+    &__content {
+      width: 100%;
+      height: 100%;
+      background: url("../../assets/img/case_768.png") bottom 30px left 40px no-repeat,
+      url("../../assets/img/star_768.svg") bottom 40px left 72px no-repeat,
+      url("../../assets/img/triangle_768.svg") top 65px left 30px no-repeat,
+      url("../../assets/img/glasess_768.png") top 71px left 230px no-repeat;
+    }
+
+    &__descr {
+      padding-top: 50px;
+    }
+
+    &__title {
+      font-size: 24px;
+      line-height: 28px;
+    }
+
+    &__text {
+      font-size: 14px;
+      line-height: 20px;
+      width: 354px;
+    }
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .legal-services {
+    height: 534px;
+    margin-bottom: 0;
+
+    &__container {
+      min-width: 280px;
+      max-width: 90%;
+    }
+    &__content {
+      width: 100%;
+      height: 100%;
+      background: url("../../assets/img/case_768.png") top 100px left 20px no-repeat,
+      url("../../assets/img/star_768.svg") top 100px left 45px no-repeat,
+      url("../../assets/img/triangle_768.svg") top 78px left 19px no-repeat,
+      url("../../assets/img/glasess_768.png") top 71px right 5px no-repeat;
+    }
+
+    &__descr {
+      padding-top: 35px;
+      width: 100%;
+    }
+
+    &__title {
+      margin-top: 0;
+      font-size: 24px;
+      line-height: 28px;
+    }
+
+    &__text {
+      margin-top: 260px;
+      width: 100%;
+      font-size: 14px;
+      line-height: 20px;
+
+    }
+  }
+}
 </style>

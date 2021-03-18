@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
+    {path: '/', redirect: '/start'},
     {
         path: '/start',
         name: 'StartConditionsPage',

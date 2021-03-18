@@ -2,27 +2,49 @@
   header.menu
     .menu__container
       .menu__logo
-        a(href='#')
+        router-link(to="/")
           img.logo(src="@/assets/icons/cdek.svg" alt="CDEK")
-      .menu__list
-        nav.menu__sub
-          .menu__sub-items
-            a.submenu-item(href='#')
-              .submenu-item__content Условия открытия
-            a.submenu-item(href='#')
-              .submenu-item__content Стандарты оформления
-            a.submenu-item(href='#')
-              .submenu-item__content Сервисы
-              img.submenu-item__arrow(src="@/assets/icons/arrow_down.svg")
-            a.submenu-item(href='#')
-              .submenu-item__content Поддержка
-              img.submenu-item__arrow(src="@/assets/icons/arrow_down.svg")
-            a.submenu-item(href='#')
-              .submenu-item__content Дорожная карта
-            a.submenu-item(href='#')
-              .submenu-item__content
-                img(src="@/assets/icons/search.svg")
-            phone
+
+      nav.menu__nav(v-if="!mobileMenu")
+        .menu__items
+          router-link.menu__item(to="/start" )
+            .menu__item-content Условия открытия
+          router-link.menu__item(to="/" )
+            .menu__item-content Стандарты оформления
+          router-link.menu__item(to="/services" )
+            .menu__item-content.menu__item-content--dropdown Сервисы
+          router-link.menu__item(to="/support" )
+            .menu__item-content.menu__item-content--dropdown Поддержка
+          router-link.menu__item(to="/" )
+            .menu__item-content Дорожная карта
+          router-link.menu__item(to="/" )
+
+      .menu__search
+        .menu__search-icon(@click="showSearch")
+
+
+      phone.menu__phone
+
+      .menu__burger(@click="toggleMenuShow" v-if="!mobileMenu")
+        .menu__burger-icon
+          span
+
+    aside.menu.menu--mobile(v-if="mobileMenu")
+      span.menu__item-content--mobile(@click="toggleMenuShow") закрыть
+      nav.menu__nav--mobile
+        .menu__items--mobile
+
+          router-link.menu__item--mobile(to="/start" )
+            .menu__item-content--mobile Условия открытия
+          router-link.menu__item.menu__item--mobile(to="/" )
+            .menu__item-content--mobile Стандарты оформления
+          router-link.menu__item--mobile(to="/services" )
+            .menu__item-content--mobile.menu__item-content--dropdown Сервисы
+          router-link.menu__item--mobile(to="/support" )
+            .menu__item-content--mobile.menu__item-content--dropdown Поддержка
+          router-link.menu__item--mobile(to="/" )
+            .menu__item-content--mobile Дорожная карта
+          router-link.menu__item--mobile(to="/" )
 
 </template>
 
@@ -32,6 +54,19 @@ export default {
   name: "Navbar",
   components: {
     Phone
+  },
+  data() {
+    return {
+      mobileMenu: false,
+    }
+  },
+  methods: {
+    showSearch() {
+      alert('show search box')
+    },
+    toggleMenuShow() {
+      this.mobileMenu = !this.mobileMenu
+    }
   }
 }
 </script>
@@ -48,6 +83,19 @@ export default {
   top: 0;
   z-index: 10;
 
+  &--mobile {
+    width: 20em;
+    height: 100vh;
+    margin-left: auto;
+
+  }
+  &__nav--mobile {
+    flex-direction: column;
+  }
+  &__item-content--mobile {
+    color: $black;
+  }
+
   &__container {
     width: 1200px;
     height: 100%;
@@ -60,36 +108,40 @@ export default {
     max-width: 100%;
     display: flex;
     align-items: center;
+    margin-right: 40px;
     .logo {
       width: 115px;
       height: 47px;
     }
   }
 
-  &__list {
-    flex: 1 0 auto;
-    min-height: auto;
-    justify-content: flex-end;
+  &__nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
   }
 
-  &__sub {
+  &__items {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
     height: 100%;
-    margin-left: 35px;
+  }
 
-    &__sub-items {
-      height: 100%;
-      width: 100%;
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    box-sizing: border-box;
+    text-decoration: none;
+    border-bottom: 3px solid $white;
+    transition: border-bottom-color .2s ease-in-out;
 
-    }
-
-    .submenu-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-    }
-    .submenu-item__content {
+    &-content {
       transition: none;
       font-weight: 500;
       font-size: 16px;
@@ -98,51 +150,121 @@ export default {
       text-transform: none;
       color: $black;
     }
+    &-content--dropdown {
 
-    .submenu-item:hover {
-      border-bottom: 3px solid #1AB248;
     }
-
-    .submenu-item__arrow {
+    &-content--dropdown:after {
+      content: url("../../assets/icons/arrow_down.svg");
       margin-left: 6px;
     }
-
-    .submenu-item__phone {
-      align-items: center;
-      justify-content: center;
-      display: flex;
-      text-decoration: none;
-      flex-direction: column;
-      padding: 0 4px;
-      margin: 0 0 0 16px;
-
-      .submenu-item__phone-number {
-        display: block;
-        color: $black;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 23px;
-        text-decoration: none;
-        margin-bottom: 2px;
-      }
-      .submenu-item__phone-text {
-        margin: 0;
-        font-size: 12px;
-        line-height: 17px;
-        color: #999999;
-        align-self: flex-end;
-      }
-    }
-
-    @media only screen and (min-width: 1000px) {
-      .menu__sub-items {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-
-        }
-      }
   }
 
+  .router-link-exact-active {
+    border-bottom: 3px solid #1AB248;
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    &-icon {
+      cursor: pointer;
+      width: 22px;
+      height: 22px;
+      background: url("../../assets/icons/search.svg");
+    }
+  }
+  .menu__phone {
+    margin-left: 24px;
+  }
+
+  &__burger {
+    display: none;
+    align-items: center;
+    height: 100%;
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+
+    &-icon > span,
+    &-icon > span::before,
+    &-icon > span::after {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #616161;
+    }
+    &-icon > span::before {
+      content: '';
+      top: -8px;
+      width: 50%;
+    }
+    &-icon > span::after {
+      content: '';
+      top: 8px;
+    }
+  }
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1279px) {
+  .menu {
+    &__container {
+      min-width: 708px;
+      max-width: 90%;
+    }
+    &__nav {
+      display: none;
+    }
+    &__search {
+      margin-left: auto;
+    }
+    &__burger {
+      display: flex;
+      margin-left: 24px;
+    }
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .menu {
+    height: 54px;
+
+    &__container {
+      min-width: 280px;
+      max-width: 90%;
+    }
+    &__logo {
+      .logo {
+        height: 34px;
+        width: 81px;
+      }
+    }
+    &__nav {
+      display: none;
+    }
+    &__search {
+      margin-left: auto;
+    }
+    &__phone {
+      display: none;
+    }
+    &__burger {
+      display: flex;
+      margin-left: 24px;
+      margin-right: 20px;
+    }
+
+
+  }
 }
 </style>

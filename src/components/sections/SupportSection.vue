@@ -24,8 +24,9 @@ export default {
 .support {
   width: 100%;
   height: 598px;
-  background: #0C9A37;
+  background: $green-dark;
   color: $white;
+  margin-bottom: 397px;
 
   &__container {
     width: 100%;
@@ -86,9 +87,12 @@ export default {
   }
 }
 
+
+
 @media only screen and (min-width: 768px) and (max-width: 1279px) {
   .support {
     height: 429px;
+    margin-bottom: 0;
 
     &__background {
       max-width: 100%;
@@ -99,29 +103,74 @@ export default {
           url("../../assets/img/star_clone_2_768.png") bottom right  no-repeat,
           url("../../assets/img/star_clone_3_768.png") bottom right  no-repeat;
     }
+
     &__container {
-      max-width: 708px;
+      min-width: 708px;
+      max-width: 90%;
     }
+    &__descr {
+      padding-top: 20px;
+    }
+
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 999px) {
+  .support {
     &__descr {
       padding-top: 48px;
 
     }
+
     &__title {
       width: 424px;
       font-size: 30px;
       line-height: 35px;
     }
-    &__subtitle,&__text {
+
+    &__subtitle, &__text {
       font-size: 14px;
       line-height: 19px;
       width: 364px;
     }
+
     &__text {
       margin-bottom: 25px;
     }
-    &__name,&__name-position {
+
+    &__name, &__name-position {
       font-size: 14px;
       line-height: 19px;
+    }
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .support {
+    height: 491px;
+    margin-bottom: 77px;
+
+    &__background {
+      background: none;
+    }
+
+    &__container {
+      min-width: 280px;
+      max-width: 90%;
+    }
+    &__descr {
+      padding-top: 25px;
+      width: 100%;
+    }
+
+    &__title {
+      margin-top: 25px;
+      font-size: 26px;
+      line-height: 30px;
+    }
+    &__subtitle, &__text {
+      font-size: 14px;
+      line-height: 19px;
+      width: 100%;
     }
   }
 }

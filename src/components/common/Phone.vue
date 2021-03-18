@@ -1,6 +1,6 @@
 <template lang="pug">
   .phone(:class="[isLight ? phoneLight : phoneDark]")
-    a.phone__number(href="+7 495 009 04 05 ") +7 495 009 04 05
+    a.phone__number(href="tel:+7 495 009 04 05 ") +7 495 009 04 05
     p.phone__label Бесплатно по всей России
 </template>
 
@@ -28,9 +28,9 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-width: fit-content;
   text-decoration: none;
-  padding: 0 4px;
-  margin: 0 0 0 16px;
+
 
   &__number {
     align-self: flex-end;
