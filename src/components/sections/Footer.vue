@@ -21,12 +21,12 @@
           a(href="#").footer__link.footer__link--subtitle Вопросы и ответы
 
         .footer__contacts
-          .footer__group--2.footer__group--wrap-reverse
+          div.footer__group--2
             a.footer__link.footer__link--question(href="#") Задать вопрос
             .footer__phone
-              phone(:is-light="true")
+                phone(:is-light="true")
 
-          a.footer__link.footer__link--mail(href="mailto:franch@cdek.ru" target="_blank") franch@cdek.ru
+            a.footer__link.footer__link--mail(href="mailto:franch@cdek.ru" target="_blank") franch@cdek.ru
 
           .footer__social-links
             a.footer__link.footer__link--social(href="https://www.instagram.com/cdek_official/?hl=ru" target="_blank") Instagram
@@ -68,14 +68,13 @@ export default {
   }
 
   &__contacts {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    text-align: right;
     margin-left: auto;
   }
 
   &__group--1 {
     display: flex;
+    align-content: flex-start;
   }
 
   &__group--wrap {
@@ -113,13 +112,16 @@ export default {
   }
 
   &__link--question {
-    display: block;
+    display: inline-block;
     border: 1px solid $white;
     font-weight: 300;
     font-size: 15px;
     line-height: 20px;
     padding: 15px 35px 19px 35px;
     margin-right: 51px;
+  }
+  &__phone {
+    display: inline-block;
   }
 
   &__social-links {
@@ -141,35 +143,72 @@ export default {
 
   &__link--mail {
     color: $green;
+    display: block;
   }
 
 }
 
-
-
-
-
-@media only screen and (min-width: 768px) and (max-width: 999px) {
+@media only screen and (min-width: 768px) and (max-width: 1279px) {
   .footer {
     &__container {
       min-width: 708px;
       max-width: 90%;
-      padding: 0 30px;
     }
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  .footer {
+    padding: 40px 0;
+
+    &__group--1 {
+      width: min-content;
+      .footer__menu-column {
+        margin-bottom: 25px;
+      }
+    }
+
+    &__group--2 {
+      display: flex;
+      flex-flow: row wrap;
+      width: 200px;
+      margin-left: auto;
+      justify-content: flex-end;
+
+    }
+    &__link--question:nth-of-type(1) {order: 3; display: block }
+    &__phone:nth-of-type(2) { order: 1; display: block}
+    &__link--mail:nth-of-type(3) {order: 2;display: block;}
+
+    &__link--question {
+      margin-top: 32px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: 0;
+    }
+    &__link--mail {
+      margin-top: 17px;
+    }
+    &__social-links {
+      margin-top: 50px;
+    }
+  }
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 999px) {
+  .footer {
+
     &__group--2 {
       display: flex;
       justify-content: flex-end;
     }
-
     &__menu-column {
       margin-right: 43px;
     }
-
     &__link--title {
       font-size: 15px;
       line-height: 19px;
     }
-
     &__link--subtitle {
       font-size: 13px;
       line-height: 18px;
@@ -178,12 +217,11 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-left: 0;
+      margin-left: auto;
     }
     &__social-links {
       align-self: flex-end;
     }
-
     &__link--mail {
       margin-top: 17px;
       margin-left: auto;
@@ -192,8 +230,6 @@ export default {
       margin-top: 17px;
       margin-right: 0;
     }
-
-
     &__link--cdek {
       font-size: 12px;
       line-height: 19px;
@@ -223,20 +259,40 @@ export default {
       align-items: center;
       margin:0;
     }
-    &__phone {
-      margin-right: 28%;
-      margin-bottom: 32px;
-
+    &__group--2 {
+      display: flex;
+      flex-flow: row wrap;
+      width: 200px;
+      margin-left: 0;
+      justify-content: center;
     }
+    &__link--question:nth-of-type(1) {order: 3; display: block }
+    &__phone:nth-of-type(2) { order: 1; display: block}
+    &__link--mail:nth-of-type(3) {order: 2;display: block;}
+
     &__link--question {
-      margin:0 auto;
+      margin-top: 32px;
+      width: fit-content;
+      margin-right: 0;
     }
     &__link--mail {
-      margin-top: 32px;
+      margin-top: 17px;
+    }
+    &__phone {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+      width: 100%;
     }
     &__social-links {
-      margin-top: 32px;
-      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      width: 60%;
+      margin-top: 40px;
+      margin-bottom: 18px;
+    }
+    &__link--social {
+      margin-left: 0;
     }
   }
 }

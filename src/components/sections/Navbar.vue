@@ -19,32 +19,42 @@
             .menu__item-content Дорожная карта
           router-link.menu__item(to="/" )
 
+      //поиск
       .menu__search
         .menu__search-icon(@click="showSearch")
 
-
+      //телефон в шапке
       phone.menu__phone
 
+      //иконка бургер меню
       .menu__burger(@click="toggleMenuShow" v-if="!mobileMenu")
         .menu__burger-icon
           span
 
-    aside.menu.menu--mobile(v-if="mobileMenu")
-      span.menu__item-content--mobile(@click="toggleMenuShow") закрыть
-      nav.menu__nav--mobile
-        .menu__items--mobile
+    //модильное меню
+    div.menu.menu--mobile(v-if="mobileMenu")
+      .menu--mobile-mask
+        aside.menu--mobile-container
 
-          router-link.menu__item--mobile(to="/start" )
-            .menu__item-content--mobile Условия открытия
-          router-link.menu__item.menu__item--mobile(to="/" )
-            .menu__item-content--mobile Стандарты оформления
-          router-link.menu__item--mobile(to="/services" )
-            .menu__item-content--mobile.menu__item-content--dropdown Сервисы
-          router-link.menu__item--mobile(to="/support" )
-            .menu__item-content--mobile.menu__item-content--dropdown Поддержка
-          router-link.menu__item--mobile(to="/" )
-            .menu__item-content--mobile Дорожная карта
-          router-link.menu__item--mobile(to="/" )
+          .menu__close(@click="toggleMenuShow" )
+            .menu__close-icon
+              span
+          nav.menu-nav.menu__nav--mobile
+            .menu__items--mobile
+
+              .menu__phone--mobile
+                phone
+              router-link.menu__item--mobile(to="/start" )
+                .menu__item-content--mobile Условия открытия
+              router-link.menu__item--mobile(to="/" )
+                .menu__item-content--mobile Стандарты оформления
+              router-link.menu__item--mobile(to="/services" )
+                .menu__item-content--mobile.menu__item-content--dropdown Сервисы
+              router-link.menu__item--mobile(to="/support" )
+                .menu__item-content--mobile.menu__item-content--dropdown Поддержка
+              router-link.menu__item--mobile(to="/" )
+                .menu__item-content--mobile Дорожная карта
+              router-link.menu__item--mobile(to="/" )
 
 </template>
 
@@ -83,19 +93,6 @@ export default {
   top: 0;
   z-index: 10;
 
-  &--mobile {
-    width: 20em;
-    height: 100vh;
-    margin-left: auto;
-
-  }
-  &__nav--mobile {
-    flex-direction: column;
-  }
-  &__item-content--mobile {
-    color: $black;
-  }
-
   &__container {
     width: 1200px;
     height: 100%;
@@ -120,7 +117,6 @@ export default {
     align-items: center;
     width: 100%;
     height: 100%;
-
   }
 
   &__items {
@@ -158,7 +154,6 @@ export default {
       margin-left: 6px;
     }
   }
-
   .router-link-exact-active {
     border-bottom: 3px solid #1AB248;
   }
@@ -179,6 +174,8 @@ export default {
     margin-left: 24px;
   }
 
+  /*иконка бургер меню*/
+
   &__burger {
     display: none;
     align-items: center;
@@ -193,7 +190,6 @@ export default {
       cursor: pointer;
       z-index: 1;
     }
-
 
     &-icon > span,
     &-icon > span::before,
@@ -212,6 +208,82 @@ export default {
     &-icon > span::after {
       content: '';
       top: 8px;
+    }
+  }
+
+
+  /*мобильное меню*/
+
+  &--mobile-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    transition: opacity .3s ease;
+  }
+  &--mobile-container {
+    width: 20em;
+    height: 100vh;
+    margin-left: auto;
+    background: $white;
+    padding: 25px;
+  }
+
+  &__nav--mobile {
+    flex-direction: column;
+  }
+  &__phone--mobile {
+    display: flex;
+  }
+  &__item-content--mobile {
+    height: 34px;
+    color: $black;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    border-bottom: 1px solid $grey-light;
+    margin-top: 15px;
+  }
+  &__close {
+    position: absolute;
+    right: 10px;
+    top:10px;
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+
+    &-icon > span,
+    &-icon > span::before,
+    &-icon > span::after {
+      display: block;
+      position: absolute;
+      width: 100%;
+
+      background-color: #616161;
+    }
+    &-icon > span::before {
+      content: '';
+      left: 0;
+      transform: rotate(45deg);
+      height: 2px;
+    }
+    &-icon > span::after {
+      content: '';
+      left: 0;
+      transform: rotate(-45deg);
+      height: 2px;
     }
   }
 
@@ -262,6 +334,9 @@ export default {
       display: flex;
       margin-left: 24px;
       margin-right: 20px;
+    }
+    &--mobile-container {
+      width: 12em;
     }
 
 
